@@ -1,4 +1,4 @@
-<div style="min-height: 74.7vh;">
+<div>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -7,18 +7,17 @@
         </thead>
 
         <tbody>
-            <!-- <tr *ngFor="let announcement of announcements">
+            <tr *ngFor="let membertype of membertypes">
                 <td>
-                    <h3>{{ announcement.title }}</h3>
-                    <p>{{ announcement.body }}</p>
-                    <p><i>{{ announcement.date }}</i></p>
+                    {{ membertype.name }}
                 </td>
+                <td>{{ membertype.description }}</td>
                 <td>
-                    <a type="button" class="btn btn-primary" href="announcement/detail/{{announcement.id}}">View</a>
-                    <a href="announcement/update/{{announcement.id}}" type="button" class="btn btn-primary">Update</a>
-                    <a type="button" class="btn btn-danger" (click)="deleteAnnouncement(announcement)">Delete</a>
+                    <a type="button" class="btn btn-primary" href="member-type/view/{{membertype.id}}">View</a>
+                    <a href="member-type/update/{{membertype.id}}" type="button" class="btn btn-primary">Update</a>
+                    <a type="button" class="btn btn-danger" (click)="deleteMemberType(membertype)">Delete</a>
                 </td>
-            </tr> -->
+            </tr>
         </tbody>
     </table>
 </div>

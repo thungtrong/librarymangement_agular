@@ -12,6 +12,9 @@ import { FormsModule } from '@angular/forms';
 import { MemTypeListComponent } from './member-type/mem-type-list/mem-type-list.component';
 import { MemberTypeComponent } from './member-type/member-type.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MemTypeCreateComponent } from './member-type/mem-type-create/mem-type-create.component';
+import { MemTypeUpdateComponent } from './member-type/mem-type-update/mem-type-update.component';
+import { MemTypeViewComponent } from './member-type/mem-type-view/mem-type-view.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,9 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     MemTypeListComponent,
     MemberTypeComponent,
+    MemTypeCreateComponent,
+    MemTypeUpdateComponent,
+    MemTypeViewComponent,
     
   ],
   imports: [

@@ -9,38 +9,37 @@ import { MemberTypeService } from 'src/app/sevice/membertype.service';
   styleUrls: ['./mem-type-list.component.css']
 })
 export class MemTypeListComponent implements OnInit {
-  tableHeaders: string[] = ['Thông báo', 'Thao tác'];
-  memtypes: MemberType[] = [];
+  tableHeaders: string[] = ['Tên', 'Mô tả'];
+  membertypes: MemberType[] = [];
   constructor(
-    private router: Router,
     private memtypeService: MemberTypeService
     ) { 
   }
 
   ngOnInit(): void {
-    // this.getAllMemberTypes(0);
+    this.getAllMemberTypes(0);
   }
 
-  // private getAllMemberTypes(page: number): void {
-  //   this.memtypeService.getMemberTypeList(page).subscribe(
-  //     data => {
-  //       // console.log(data);
-  //       this.memtypes = data.content;
-  //     }
-  //   );
-  // }
+  private getAllMemberTypes(page: number): void {
+    this.memtypeService.getMemberTypeList(page).subscribe(
+      data => {
+        console.log(data);
+        this.membertypes = data.content;
+      }
+    );
+  }
 
-  // deleteMemberType(memtype: MemberType){
-  //   let choose = confirm(`Are you sure you want to delete this memtype`);
-  //   if (choose) {
-  //     this.memtypeService.deleteMemberType(memtype).subscribe({
-  //       next: () => {
-  //         this.ngOnInit();
-  //       },
-  //       error: (error) => console.log(error)
-  //     });
-  //   }
-  //   else
-  //     console.log('ko xoa');
-  // }
+  deleteMemberType(memtype: MemberType){
+    let choose = confirm(`Bạn có chắc chắn muốn xoá ?`);
+    if (choose) {
+      this.memtypeService.deleteMemberType(memtype).subscribe({
+        next: () => {
+          this.getAllMemberTypes(0);
+        },
+        error: (error) => console.log(error)
+      });
+    }
+    else
+      console.log('ko xoa');
+  }
 }
