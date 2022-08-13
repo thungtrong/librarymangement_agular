@@ -26,7 +26,7 @@ export class MemberListComponent implements OnInit {
   }
 
   private getAllMembers(page: number): void {
-    this.memtypeService.getMemberList(page).subscribe(
+    this.memtypeService.getList(page).subscribe(
       data => {
         console.log(data);
         this.members = data;
@@ -38,7 +38,7 @@ export class MemberListComponent implements OnInit {
   deleteMember(memtype: Member){
     let choose = confirm(`Bạn có chắc chắn muốn xoá ?`);
     if (choose) {
-      this.memtypeService.deleteMember(memtype).subscribe({
+      this.memtypeService.delete(memtype).subscribe({
         next: () => {
           this.getAllMembers(0);
         },

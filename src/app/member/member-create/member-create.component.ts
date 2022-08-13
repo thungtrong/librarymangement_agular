@@ -21,7 +21,7 @@ export class MemberCreateComponent implements OnInit {
   private saveMember(member: Member)
   {
     // console.log(member);
-    this.memberService.createMember(member).subscribe(
+    this.memberService.create(member).subscribe(
       {
         next: (data) => {
           // console.log(data);  

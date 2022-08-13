@@ -17,7 +17,7 @@ export class MemTypeUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     let id = this.activatedRoute.snapshot.params['id'];
-    this.memberTypeService.getMemberTypeById(id).subscribe({
+    this.memberTypeService.getById(id).subscribe({
       next: (data) => {
         this.memberType = data;
       },
@@ -27,7 +27,7 @@ export class MemTypeUpdateComponent implements OnInit {
 
   onSubmit()
   {
-    this.memberTypeService.updateMemberType(this.memberType).subscribe({
+    this.memberTypeService.update(this.memberType).subscribe({
       next: (data) => {
         this.router.navigate(['/member-type']);
       },

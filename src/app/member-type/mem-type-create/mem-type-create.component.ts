@@ -19,7 +19,7 @@ export class MemTypeCreateComponent implements OnInit {
 
   private saveMemberType(memberType: MemberType)
   {
-    this.memberTypeService.createMemberType(memberType).subscribe(
+    this.memberTypeService.create(memberType).subscribe(
       {
         next: (data) => {
           console.log(data);  

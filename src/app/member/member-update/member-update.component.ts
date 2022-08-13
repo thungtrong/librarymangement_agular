@@ -19,7 +19,7 @@ export class MemberUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     let id = this.activatedRoute.snapshot.params['id'];
-    this.memberService.getMemberById(id).subscribe({
+    this.memberService.getById(id).subscribe({
       next: (data) => { 
         this.member = data;
       },
@@ -29,7 +29,7 @@ export class MemberUpdateComponent implements OnInit {
 
   private saveMember(member: Member)
   {
-    this.memberService.updateMember(member).subscribe(
+    this.memberService.update(member).subscribe(
       {
         next: (data) => { 
           this.goToMemberList();

@@ -21,7 +21,7 @@ export class MemTypeListComponent implements OnInit {
   }
 
   private getAllMemberTypes(page: number): void {
-    this.memtypeService.getMemberTypeList(page).subscribe(
+    this.memtypeService.getList(page).subscribe(
       data => {
         console.log(data);
         this.membertypes = data.content;
@@ -32,7 +32,7 @@ export class MemTypeListComponent implements OnInit {
   deleteMemberType(memtype: MemberType){
     let choose = confirm(`Bạn có chắc chắn muốn xoá ?`);
     if (choose) {
-      this.memtypeService.deleteMemberType(memtype).subscribe({
+      this.memtypeService.delete(memtype).subscribe({
         next: () => {
           this.getAllMemberTypes(0);
         },

@@ -19,7 +19,7 @@ export class MemberViewComponent implements OnInit {
 
   ngOnInit(): void {
     let id = this.activatedRoute.snapshot.params['id'];
-    this.memberService.getMemberById(id).subscribe({
+    this.memberService.getById(id).subscribe({
       next: (data) => { 
         this.member = data;
       },

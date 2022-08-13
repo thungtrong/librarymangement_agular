@@ -18,7 +18,7 @@ export class MemTypeViewComponent implements OnInit {
 
   ngOnInit(): void {
     let id = this.activatedRoute.snapshot.params['id'];
-    this.memberTypeService.getMemberTypeById(id).subscribe({
+    this.memberTypeService.getById(id).subscribe({
       next: (data) => {
         this.memberType = data;
       },
