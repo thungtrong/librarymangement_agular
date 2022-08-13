@@ -15,7 +15,7 @@
 
 #content
 {
-    min-height: 81vh;
+    min-height: 74.8vh;
 }
 
 #footer {
@@ -27,4 +27,14 @@
     padding: 0px;
     height: 60px;
     line-height: 60px;
+}
+
+.action-group
+{
+    width: 12vw;
+}
+.action-group a
+{
+    margin-left: 5px;
+    margin-right: 5px;
 }

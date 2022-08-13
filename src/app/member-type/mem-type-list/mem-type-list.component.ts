@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MemberType } from 'src/app/model/models';
-import { MemberTypeService } from 'src/app/sevice/membertype.service';
+import { MemberTypeService } from 'src/app/service/membertype.service';
 
 @Component({
   selector: 'app-mem-type-list',

@@ -1,4 +1,4 @@
-<div>
+<div id="content">
     <table class="table table-striped">
         <thead>
             <tr>
@@ -12,10 +12,13 @@
                     {{ membertype.name }}
                 </td>
                 <td>{{ membertype.description }}</td>
-                <td>
-                    <a type="button" class="btn btn-primary" href="member-type/view/{{membertype.id}}">View</a>
-                    <a href="member-type/update/{{membertype.id}}" type="button" class="btn btn-primary">Update</a>
-                    <a type="button" class="btn btn-danger" (click)="deleteMemberType(membertype)">Delete</a>
+                <td class="action-group">
+                    <a type="button" class="btn btn-primary" href="member-type/view/{{membertype.id}}"><i
+                            class="fa fa-eye" aria-hidden="true"></i></a>
+                    <a href="member-type/update/{{membertype.id}}" type="button" class="btn btn-primary"><i
+                            class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                    <a type="button" class="btn btn-danger" (click)="deleteMemberType(membertype)"><i
+                            class="fa fa-trash-o" aria-hidden="true"></i></a>
                 </td>
             </tr>
         </tbody>
