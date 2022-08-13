@@ -15,6 +15,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { MemTypeCreateComponent } from './member-type/mem-type-create/mem-type-create.component';
 import { MemTypeUpdateComponent } from './member-type/mem-type-update/mem-type-update.component';
 import { MemTypeViewComponent } from './member-type/mem-type-view/mem-type-view.component';
+import { MemberComponent } from './member/member.component';
+import { MemberListComponent } from './member/member-list/member-list.component';
+import { MemberCreateComponent } from './member/member-create/member-create.component';
+import { MemberUpdateComponent } from './member/member-update/member-update.component';
+import { MemberViewComponent } from './member/member-view/member-view.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +34,11 @@ import { MemTypeViewComponent } from './member-type/mem-type-view/mem-type-view.
     MemTypeCreateComponent,
     MemTypeUpdateComponent,
     MemTypeViewComponent,
+    MemberComponent,
+    MemberListComponent,
+    MemberCreateComponent,
+    MemberUpdateComponent,
+    MemberViewComponent,
     
   ],
   imports: [

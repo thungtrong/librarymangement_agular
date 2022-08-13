@@ -6,21 +6,39 @@ import { MemTypeListComponent } from './member-type/mem-type-list/mem-type-list.
 import { MemTypeUpdateComponent } from './member-type/mem-type-update/mem-type-update.component';
 import { MemTypeViewComponent } from './member-type/mem-type-view/mem-type-view.component';
 import { MemberTypeComponent } from './member-type/member-type.component';
+import { MemberCreateComponent } from './member/member-create/member-create.component';
+import { MemberListComponent } from './member/member-list/member-list.component';
+import { MemberUpdateComponent } from './member/member-update/member-update.component';
+import { MemberViewComponent } from './member/member-view/member-view.component';
+import { MemberComponent } from './member/member.component';
 import { RootComponent } from './root/root.component';
 
 const routes: Routes = [
   {path: '', component: RootComponent,
-  children: [
-    {path: 'member-type', component: MemberTypeComponent, title: "Loại Thành Viên",
     children: [
-      {path: 'list', component: MemTypeListComponent},
-      {path: 'create', component: MemTypeCreateComponent},
-      {path: 'update/:id', component: MemTypeUpdateComponent},
-      {path: 'view/:id', component: MemTypeViewComponent},
-      {path: '', component: MemTypeListComponent}
+      {
+        path: 'member-type', component: MemberTypeComponent, title: "Loại Thành Viên",
+        children: [
+          {path: 'list', component: MemTypeListComponent},
+          {path: 'create', component: MemTypeCreateComponent},
+          {path: 'update/:id', component: MemTypeUpdateComponent},
+          {path: 'view/:id', component: MemTypeViewComponent},
+          {path: '', component: MemTypeListComponent}
+        ]
+      },
+      
+      {
+        path: 'member', component: MemberComponent, title: "Loại Thành Viên",
+        children: [
+          {path: 'list', component: MemberListComponent},
+          {path: 'create', component: MemberCreateComponent},
+          {path: 'update/:id', component: MemberUpdateComponent},
+          {path: 'view/:id', component: MemberViewComponent},
+          {path: '', component: MemberListComponent}
+        ]
+      },
+
     ]
-    }
-  ]
   },
   {path: 'login', component: LoginComponent, title: "Login In"}
 ];
