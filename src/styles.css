@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+#header-container #title
+{
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+#update-button, #create-button
+{
+    height: 80%;
+}
+
+#content
+{
+    min-height: 75vh;
+}
+
+#footer {
+    position: relative;
+    overflow: hidden;
+    z-index: -1;
+    bottom: 0;
+    background-color: rgb(162, 189, 203);
+    padding: 0px;
+    height: 60px;
+    line-height: 60px;
+}

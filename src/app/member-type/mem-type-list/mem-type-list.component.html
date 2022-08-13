@@ -1,0 +1,24 @@
+<div style="min-height: 74.7vh;">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th *ngFor="let header of tableHeaders"> {{header}} </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <!-- <tr *ngFor="let announcement of announcements">
+                <td>
+                    <h3>{{ announcement.title }}</h3>
+                    <p>{{ announcement.body }}</p>
+                    <p><i>{{ announcement.date }}</i></p>
+                </td>
+                <td>
+                    <a type="button" class="btn btn-primary" href="announcement/detail/{{announcement.id}}">View</a>
+                    <a href="announcement/update/{{announcement.id}}" type="button" class="btn btn-primary">Update</a>
+                    <a type="button" class="btn btn-danger" (click)="deleteAnnouncement(announcement)">Delete</a>
+                </td>
+            </tr> -->
+        </tbody>
+    </table>
+</div>
