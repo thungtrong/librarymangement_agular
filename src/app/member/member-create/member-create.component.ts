@@ -20,11 +20,11 @@ export class MemberCreateComponent implements OnInit {
 
   private saveMember(member: Member)
   {
-    console.log(member);
+    // console.log(member);
     this.memberService.createMember(member).subscribe(
       {
         next: (data) => {
-          console.log(data);  
+          // console.log(data);  
           this.goToMemberList();
         },
         error: err => console.log(err)

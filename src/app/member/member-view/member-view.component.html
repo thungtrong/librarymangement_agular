@@ -1,1 +1,50 @@
-<p>member-view works!</p>
+<div id="content" class="col-6 offset-3">
+    <h4>Tạo mới</h4>
+    <form>
+        <div class="form-group row">
+            <div class="col">
+                <label for="lastName"></label>
+                <input disabled [(ngModel)]="member.lastName" type="text" class="form-control"
+                    placeholder="Nhập họ thành viên" id="title" name="title" required>
+            </div>
+
+            <div class="col">
+                <label for="fistName"></label>
+                <input disabled [(ngModel)]="member.firstName" type="text" class="form-control"
+                    placeholder="Nhập tên thành viên" id="fistName" name="fistName" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="gender"></label>
+            <select disabled="disabled" [(ngModel)]="member.gender" name="gender" id="gender" class="form-control">
+                <option value="undefined">Chọn giới tính</option>
+                <option value="true">Nam</option>
+                <option value="false">Nữ</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="dateOfBirth"></label>
+            <input disabled [(ngModel)]="member.dateOfBirth" class="form-control" type="date" id="dateOfBirth"
+                name="dateOfBirth">
+        </div>
+
+        <div class="form-group">
+            <label for="contact"></label>
+            <input disabled [(ngModel)]="member.contact" class="form-control" type="text" id="contact" name="contact"
+                placeholder="Nhập số điện thoại">
+        </div>
+
+        <div class="form-group">
+            <label for="email"></label>
+            <input disabled [(ngModel)]="member.email" class="form-control" type="text" id="email" name="email"
+                placeholder="Nhập email thành viên">
+        </div>
+
+        <div class="form-group d-flex justify-content-end m-2">
+            <!-- <button class="btn btn-primary" type="submit" id="submit">Tạo</button> -->
+            <a (click)="goBack()" class="btn btn-default">Quay Lại</a>
+        </div>
+    </form>
+</div>
