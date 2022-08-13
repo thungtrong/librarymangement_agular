@@ -6,7 +6,10 @@ export interface Item {
 
 export interface Page<T> {
     content: T[],
-    pageable: any
+    pageable: any,
+    last: boolean,
+    first: boolean,
+    totalPages: number
 }
 
 export interface MemberType
@@ -14,4 +17,15 @@ export interface MemberType
     id?: number,
     name?: string,
     description?: string,
+}
+
+export interface Member
+{
+    id?: number,
+    firstName?: string,
+    lastName?: string,
+    gender?: boolean,
+    dateOfBirth?: Date,
+    contact?: string,
+    email?: string
 }

@@ -1,1 +1,37 @@
-<p>member-list works!</p>
+<div id="content" class="d-flex flex-column">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th *ngFor="let header of tableHeaders"> {{header}} </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let member of members.content">
+                <td>
+                    {{ member.lastName }}
+                </td>
+                <td>{{ member.firstName }}</td>
+                <td>{{ member.gender ? 'Nam' : 'Nữ'}}</td>
+                <td>{{ member.contact }}</td>
+                <td>{{ member.dateOfBirth }}</td>
+                <td class="action-group">
+                    <a type="button" class="btn btn-primary" href="member/view/{{member.id}}"><i class="fa fa-eye"
+                            aria-hidden="true"></i></a>
+                    <a href="member/update/{{member.id}}" type="button" class="btn btn-primary"><i
+                            class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                    <a type="button" class="btn btn-danger" (click)="deleteMember(member)"><i class="fa fa-trash-o"
+                            aria-hidden="true"></i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <nav aria-label="Page navigationf" class="d-flex mt-auto justify-content-end">
+        <ul class="pagination">
+            <li class="page-item {{ members.first ? 'disabled': ''}}"><a class="page-link" href="#">Previous</a></li>
+            <li *ngFor="let page of rangePagination()" class="page-item"><a class="page-link" routerLink="list"
+                    [queryParams]="{page: page}">{{page}}</a></li>
+            <li class="page-item {{ members.last ? 'disabled': ''}}"><a class="page-link" href="#">Next</a></li>
+        </ul>
+    </nav>
+</div>

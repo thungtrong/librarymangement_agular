@@ -20,6 +20,7 @@ import { MemberListComponent } from './member/member-list/member-list.component'
 import { MemberCreateComponent } from './member/member-create/member-create.component';
 import { MemberUpdateComponent } from './member/member-update/member-update.component';
 import { MemberViewComponent } from './member/member-view/member-view.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { MemberViewComponent } from './member/member-view/member-view.component'
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
