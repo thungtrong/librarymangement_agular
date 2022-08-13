@@ -21,6 +21,11 @@ import { MemberCreateComponent } from './member/member-create/member-create.comp
 import { MemberUpdateComponent } from './member/member-update/member-update.component';
 import { MemberViewComponent } from './member/member-view/member-view.component';
 import { CommonModule } from '@angular/common';
+import { CategoryComponent } from './category/category.component';
+import { CategoryListComponent } from './category/category-list/category-list.component';
+import { CategoryCreateComponent } from './category/category-create/category-create.component';
+import { CategoryUpdateComponent } from './category/category-update/category-update.component';
+import { CategoryViewComponent } from './category/category-view/category-view.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +45,11 @@ import { CommonModule } from '@angular/common';
     MemberCreateComponent,
     MemberUpdateComponent,
     MemberViewComponent,
+    CategoryComponent,
+    CategoryListComponent,
+    CategoryCreateComponent,
+    CategoryUpdateComponent,
+    CategoryViewComponent,
     
   ],
   imports: [

@@ -1,0 +1,43 @@
+<div id="content" class="d-flex flex-column">
+    <table class="table table-striped">
+
+        <tbody>
+            <tr *ngFor="let category of categories.content">
+                <td>
+                    <b>{{ category.name }}</b> {{ category.shortname ? ' - '+category.shortname : '' }}
+                    <p>{{ category.description }}</p>
+
+                    <p class="action-group">
+                        <a type="button" href="category/view/{{category.id}}">
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                        </a> |
+                        <a href="category/update/{{category.id}}" type="button">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        </a> |
+                        <a type="button" class="btn-primary" (click)="deleteCategory(category)">
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        </a>
+                    </p>
+                </td>
+
+
+            </tr>
+        </tbody>
+    </table>
+    <nav aria-label="Page navigationf" class="d-flex mt-auto justify-content-end">
+        <ul class="pagination">
+            <li class="page-item {{ categories.first ? 'disabled': ''}}">
+                <a class="page-link" routerLink="/category/list" [queryParams]="{page: categories.pageable.pageNumber}"
+                    (click)="goToPageNumber(categories.pageable.pageNumber-1)">Previous</a>
+            </li>
+            <li *ngFor="let page of pagination" class="page-item">
+                <a class="page-link {{pageNumber == page ? 'active': ''}}" routerLink="/category/list"
+                    [queryParams]="{page: page+1}" (click)="goToPageNumber(page)">{{page+1}}</a>
+            </li>
+            <li class="page-item {{ categories.last ? 'disabled': ''}}">
+                <a routerLink="/category/list" [queryParams]="{page: categories.pageable.pageNumber+1}"
+                    (click)="goToPageNumber(categories.pageable.pageNumber+1)" class="page-link">Next</a>
+            </li>
+        </ul>
+    </nav>
+</div>

@@ -1,5 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CategoryCreateComponent } from './category/category-create/category-create.component';
+import { CategoryListComponent } from './category/category-list/category-list.component';
+import { CategoryUpdateComponent } from './category/category-update/category-update.component';
+import { CategoryViewComponent } from './category/category-view/category-view.component';
+import { CategoryComponent } from './category/category.component';
 import { LoginComponent } from './login/login.component';
 import { MemTypeCreateComponent } from './member-type/mem-type-create/mem-type-create.component';
 import { MemTypeListComponent } from './member-type/mem-type-list/mem-type-list.component';
@@ -38,6 +43,16 @@ const routes: Routes = [
         ]
       },
 
+      {
+        path: 'category', component: CategoryComponent, title: "Loại Thành Viên",
+        children: [
+          {path: 'list', component: CategoryListComponent},
+          {path: 'create', component: CategoryCreateComponent},
+          {path: 'update/:id', component: CategoryUpdateComponent},
+          {path: 'view/:id', component: CategoryViewComponent},
+          {path: '', component: CategoryListComponent}
+        ]
+      },
     ]
   },
   {path: 'login', component: LoginComponent, title: "Login In"}

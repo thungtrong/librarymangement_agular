@@ -1,17 +1,17 @@
 <div id="content" class="col-6 offset-3">
-    <h4>Tạo mới</h4>
+    <h4>Xem chi tiết</h4>
     <form>
         <div class="form-group row">
             <div class="col">
                 <label for="lastName"></label>
                 <input disabled [(ngModel)]="member.lastName" type="text" class="form-control"
-                    placeholder="Nhập họ thành viên" id="title" name="title" required>
+                    placeholder="Nhập họ thành viên" id="lastName" name="lastName" required>
             </div>
 
             <div class="col">
-                <label for="fistName"></label>
+                <label for="firstName"></label>
                 <input disabled [(ngModel)]="member.firstName" type="text" class="form-control"
-                    placeholder="Nhập tên thành viên" id="fistName" name="fistName" required>
+                    placeholder="Nhập tên thành viên" id="firstName" name="firstName" required>
             </div>
         </div>
 
@@ -44,7 +44,8 @@
 
         <div class="form-group d-flex justify-content-end m-2">
             <!-- <button class="btn btn-primary" type="submit" id="submit">Tạo</button> -->
-            <a (click)="goBack()" class="btn btn-default">Quay Lại</a>
+            <a (click)="goBack()" class="btn btn-default"><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay
+                Lại</a>
         </div>
     </form>
 </div>
