@@ -33,7 +33,7 @@ const routes: Routes = [
       },
       
       {
-        path: 'member', component: MemberComponent, title: "Loại Thành Viên",
+        path: 'member', component: MemberComponent, title: "Thành Viên",
         children: [
           {path: 'list', component: MemberListComponent},
           {path: 'create', component: MemberCreateComponent},
@@ -44,7 +44,7 @@ const routes: Routes = [
       },
 
       {
-        path: 'category', component: CategoryComponent, title: "Loại Thành Viên",
+        path: 'category', component: CategoryComponent, title: "Thể Loại Sách",
         children: [
           {path: 'list', component: CategoryListComponent},
           {path: 'create', component: CategoryCreateComponent},
