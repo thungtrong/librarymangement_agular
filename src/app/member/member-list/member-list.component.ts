@@ -10,9 +10,11 @@ import { MemberService } from 'src/app/service/member.service';
 })
 export class MemberListComponent implements OnInit {
 
-  tableHeaders: string[] = ['Họ', 'Tên', 'Giới Tính', 'Số điện thoại', 'Ngày sinh'];
+  tableHeaders: string[] = ['Họ', 'Tên', 'Giới Tính', 'Số điện thoại', 'Ngày sinh', 'Loại thành viên'];
   members: Page<Member> = {content: [], pageable: null, last: false, first: true, totalPages: 1};
-
+  pageNumber: number = 1;
+  totalPages: number = 1;
+  pagination: number[] = [1];
   constructor(
     private memtypeService: MemberService,
     private activatedRoute: ActivatedRoute,
@@ -30,7 +32,9 @@ export class MemberListComponent implements OnInit {
       data => {
         console.log(data);
         this.members = data;
-        data.pageable.pageNumber += 1;
+        this.pageNumber = data.pageable.pageNumber;
+        this.totalPages = data.totalPages;
+        this.rangePagination();
       }
     );
   }
@@ -50,12 +54,18 @@ export class MemberListComponent implements OnInit {
   }
 
   rangePagination() {
-    let start = this.members.pageable.pageNumber;
-    let totalPages = this.members.totalPages;
-    if (start == totalPages)
-      return [start];
-    let end = start + 5 <= totalPages ? start + 5 : totalPages;
-    return Array.from({ length }, (_, i) => start + i);
+    let start = this.pageNumber - 3 >= 1 ? this.pageNumber - 3 : 0;
+    if (start == this.totalPages){
+      this.pagination = [start];
+      return;
+    }
+    let end = this.pageNumber + 3 <= this.totalPages ? this.pageNumber + 3 : this.totalPages;
+    let length = end - start;
+    this.pagination = Array.from({ length }, (_, i) => start + i);
+  }
+
+  goToPageNumber(pageNumber: number): void {
+    this.getAllMembers(pageNumber);
   }
 
 }

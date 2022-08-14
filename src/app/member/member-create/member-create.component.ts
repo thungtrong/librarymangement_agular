@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Member } from 'src/app/model/models';
+import { Member, MemberType } from 'src/app/model/models';
 import { MemberService } from 'src/app/service/member.service';
+import { MemberTypeService } from 'src/app/service/membertype.service';
 
 @Component({
   selector: 'app-member-create',
@@ -11,16 +12,27 @@ import { MemberService } from 'src/app/service/member.service';
 export class MemberCreateComponent implements OnInit {
 
   member: Member =  {gender: undefined};
+  memberTypes: MemberType[] = [];
+  selectedMemberType: string = 'null';
+
   constructor(private memberService: MemberService,
-              private router: Router) {    
+              private router: Router,
+              private memberTypeService: MemberTypeService) {    
    }
 
   ngOnInit(): void {
+    this.memberTypeService.getList(0).subscribe({
+      next: (data) => {
+        this.memberTypes = data.content;
+      },
+      error: err => console.log(err)
+    });
   }
 
   private saveMember(member: Member)
   {
-    // console.log(member);
+    member.memberType = JSON.parse(this.selectedMemberType);
+    console.log(member);
     this.memberService.create(member).subscribe(
       {
         next: (data) => {
@@ -41,9 +53,12 @@ export class MemberCreateComponent implements OnInit {
     this.saveMember(this.member);
   }
 
-  
   goBack()
   {
     this.router.navigate(['/member']);
+  }
+
+  stringify(obj: Object): string {
+    return JSON.stringify(obj);
   }
 }

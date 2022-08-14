@@ -42,6 +42,15 @@
                 placeholder="Nhập email thành viên">
         </div>
 
+        <div class="form-group">
+            <label for="memberType"></label>
+            <select [(ngModel)]="selectedMemberType" name="memberType" id="memberType" class="form-control" required>
+                <option value="null">Chọn Loại Thành Viên</option>
+                <option *ngFor="let memberType of memberTypes" value="{{stringify(memberType)}}">{{memberType.name}}
+                </option>
+            </select>
+        </div>
+
         <div class="form-group d-flex justify-content-end m-2">
             <button class="btn btn-primary" type="submit" id="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i>
                 Cập nhật</button>

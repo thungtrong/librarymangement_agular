@@ -15,6 +15,7 @@
                 <td>{{ member.gender ? 'Nam' : 'Nữ'}}</td>
                 <td>{{ member.contact }}</td>
                 <td>{{ member.dateOfBirth }}</td>
+                <td>{{ member.memberType ? member.memberType.name : ''}}</td>
                 <td class="action-group">
                     <a type="button" class="btn btn-secondary" href="member/view/{{member.id}}"><i class="fa fa-eye"
                             aria-hidden="true"></i></a>
@@ -28,10 +29,18 @@
     </table>
     <nav aria-label="Page navigationf" class="d-flex mt-auto justify-content-end">
         <ul class="pagination">
-            <li class="page-item {{ members.first ? 'disabled': ''}}"><a class="page-link" href="#">Previous</a></li>
-            <li *ngFor="let page of rangePagination()" class="page-item"><a class="page-link" routerLink="list"
-                    [queryParams]="{page: page}">{{page}}</a></li>
-            <li class="page-item {{ members.last ? 'disabled': ''}}"><a class="page-link" href="#">Next</a></li>
+            <li class="page-item {{ members.first ? 'disabled': ''}}">
+                <a class="page-link" routerLink="/member/list" [queryParams]="{page: pageNumber}"
+                    (click)="goToPageNumber(pageNumber-1)">Previous</a>
+            </li>
+            <li *ngFor="let page of pagination" class="page-item">
+                <a class="page-link {{pageNumber == page ? 'active': ''}}" routerLink="/member/list"
+                    [queryParams]="{page: page+1}" (click)="goToPageNumber(page)">{{page+1}}</a>
+            </li>
+            <li class="page-item {{ members.last ? 'disabled': ''}}">
+                <a routerLink="/member/list" [queryParams]="{page: pageNumber+2}" (click)="goToPageNumber(pageNumber+1)"
+                    class="page-link">Next</a>
+            </li>
         </ul>
     </nav>
 </div>
