@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Category } from 'src/app/model/models';
@@ -12,6 +13,7 @@ export class CategoryCreateComponent implements OnInit {
 
   category: Category =  {};
   constructor(private categoryService: CategoryService,
+    private location: Location,
               private router: Router) {    
    }
 
@@ -20,12 +22,12 @@ export class CategoryCreateComponent implements OnInit {
 
   private saveCategory(category: Category)
   {
-    console.log(category);
+    // console.log(category);
     this.categoryService.create(category).subscribe(
       {
         next: (data) => {
           // console.log(data);  
-          this.goToCategoryList();
+          this.location.back();
         },
         error: err => {
           alert("Mô tả quá dài");
@@ -34,10 +36,6 @@ export class CategoryCreateComponent implements OnInit {
     );
   }
 
-  private goToCategoryList()
-  {
-    this.router.navigate(['/category']);
-  }
 
   onSubmit(): void {
     this.saveCategory(this.category);
@@ -46,7 +44,7 @@ export class CategoryCreateComponent implements OnInit {
   
   goBack()
   {
-    this.router.navigate(['/category']);
+    this.router.navigate(['/category'], {queryParams: {page: this.categoryService.pageNumber}});
   }
 
 }
