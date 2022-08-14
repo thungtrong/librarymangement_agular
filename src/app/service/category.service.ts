@@ -9,6 +9,7 @@ import { rootApi, BaseService } from './config.service';
 })
 export class CategoryService implements BaseService<Category, number> {
   private apiUrl: string = `${rootApi}/category`;
+  public pageNumber: number = 1;
   
   constructor(private httpClient: HttpClient) { }
 
