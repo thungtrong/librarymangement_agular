@@ -1,0 +1,64 @@
+<div id="content" class="col-8 offset-2" center>
+    <div class="row card d-flex flex-row pt-3 pb-3">
+        <div class="col-4">
+            <img class="card-img-top" src="{{getDefaultImg()}}" alt="Card image cap">
+        </div>
+
+        <div class="col-8">
+            <table id="book-details-table" cellpadding="5px">
+
+                <tr>
+                    <td colspan="2">
+                        <marquee>
+                            <h2>
+                                {{ book.title }}
+                            </h2>
+                        </marquee>
+                    </td>
+                </tr>
+                <colgroup>
+                    <col style="text-align: start">
+                    <col>
+                </colgroup>
+                <tr>
+                    <th>Tác giả: </th>
+                    <td>
+                        <b><i>{{ book.authors }}</i></b>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Thể loại: </th>
+                    <td>
+                        {{ book.category ? book.category.name : '' }}
+                    </td>
+                </tr>
+                <tr>
+                    <th valign="top">Giới thiệu: </th>
+                    <td>
+                        {{ book.description }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Nhà xuất bản: </th>
+                    <td>
+                        {{ book.publisher }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Trạng thái: </th>
+                    <td>
+                        <span class="book-status {{book.status}}">{{ book.status ? 'Khả dụng' : 'Đã được mượn' }}</span>
+                    </td>
+                </tr>
+
+            </table>
+
+        </div>
+        <div class="form-group d-flex justify-content-end m-2">
+
+            <a (click)="goBack()" class="btn btn-default">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i> Quay Lại
+            </a>
+        </div>
+    </div>
+</div>

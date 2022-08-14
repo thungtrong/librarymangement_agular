@@ -30,7 +30,6 @@ export class CategoryListComponent implements OnInit {
   private getAllCategorys(page: number): void {
     this.categoryService.getList(page).subscribe(
       data => {
-        console.log(data);
         this.categories = data;
         this.totalPages = data.totalPages ? data.totalPages : 1;
         this.pageNumber = data.pageable.pageNumber;

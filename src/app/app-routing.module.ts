@@ -1,5 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BookCreateComponent } from './book/book-create/book-create.component';
+import { BookListComponent } from './book/book-list/book-list.component';
+import { BookUpdateComponent } from './book/book-update/book-update.component';
+import { BookViewComponent } from './book/book-view/book-view.component';
+import { BookComponent } from './book/book.component';
 import { CategoryCreateComponent } from './category/category-create/category-create.component';
 import { CategoryListComponent } from './category/category-list/category-list.component';
 import { CategoryUpdateComponent } from './category/category-update/category-update.component';
@@ -31,7 +36,6 @@ const routes: Routes = [
           {path: '', component: MemTypeListComponent}
         ]
       },
-      
       {
         path: 'member', component: MemberComponent, title: "Thành Viên",
         children: [
@@ -42,7 +46,6 @@ const routes: Routes = [
           {path: '', component: MemberListComponent}
         ]
       },
-
       {
         path: 'category', component: CategoryComponent, title: "Thể Loại Sách",
         children: [
@@ -51,6 +54,16 @@ const routes: Routes = [
           {path: 'update/:id', component: CategoryUpdateComponent},
           {path: 'view/:id', component: CategoryViewComponent},
           {path: '', component: CategoryListComponent}
+        ]
+      },
+      {
+        path: 'book', component: BookComponent, title: "Sách",
+        children: [
+          {path: 'list', component: BookListComponent},
+          {path: 'create', component: BookCreateComponent},
+          {path: 'update/:id', component: BookUpdateComponent},
+          {path: 'view/:id', component: BookViewComponent},
+          {path: '', component: BookListComponent}
         ]
       },
     ]

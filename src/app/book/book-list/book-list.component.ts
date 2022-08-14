@@ -1,22 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Member, Page } from 'src/app/model/models';
-import { MemberService } from 'src/app/service/member.service';
+import { Book, Page } from 'src/app/model/models';
+import { BookService } from 'src/app/service/book.service';
 
 @Component({
-  selector: 'app-member-list',
-  templateUrl: './member-list.component.html',
-  styleUrls: ['./member-list.component.css']
+  selector: 'app-book-list',
+  templateUrl: './book-list.component.html',
+  styleUrls: ['./book-list.component.css']
 })
-export class MemberListComponent implements OnInit {
+export class BookListComponent implements OnInit {
 
-  tableHeaders: string[] = ['Họ', 'Tên', 'Giới Tính', 'Số điện thoại', 'Ngày sinh', 'Loại thành viên'];
-  members: Page<Member> = {content: [], pageable: null, last: false, first: true, totalPages: 1};
-  pageNumber: number = 1;
+  books: Page<Book> = {content: [], pageable: {}, last: false, first: true, totalPages: 1};
   totalPages: number = 1;
+  pageNumber: number = 0;
   pagination: number[] = [1];
   constructor(
-    private memberService: MemberService,
+    private bookService: BookService,
     private activatedRoute: ActivatedRoute,
     private router: Router
     ) { 
@@ -25,27 +24,27 @@ export class MemberListComponent implements OnInit {
   ngOnInit(): void {
     let page = this.activatedRoute.snapshot.queryParams['page'];
     page = page ? page - 1: 0;
-    this.getAllMembers(page);
+    this.getAllBooks(page);
   }
 
-  private getAllMembers(page: number): void {
-    this.memberService.getList(page).subscribe(
+  private getAllBooks(page: number): void {
+    this.bookService.getList(page).subscribe(
       data => {
-        this.members = data;
+        this.books = data;
+        this.totalPages = data.totalPages ? data.totalPages : 1;
         this.pageNumber = data.pageable.pageNumber;
-        this.totalPages = data.totalPages;
-        
         this.rangePagination();
       }
     );
+    
   }
 
-  deleteMember(memtype: Member){
+  deleteBook(book: Book){
     let choose = confirm(`Bạn có chắc chắn muốn xoá ?`);
     if (choose) {
-      this.memberService.delete(memtype).subscribe({
+      this.bookService.delete(book).subscribe({
         next: () => {
-          this.getAllMembers(0);
+          this.getAllBooks(BookService.pageNumber);
         },
         error: (error) => console.log(error)
       });
@@ -56,7 +55,7 @@ export class MemberListComponent implements OnInit {
 
   rangePagination() {
     let start = this.pageNumber - 3 >= 1 ? this.pageNumber - 3 : 0;
-    if (start == this.totalPages){
+    if (start == 0 && this.totalPages == 1){
       this.pagination = [start];
       return;
     }
@@ -66,22 +65,24 @@ export class MemberListComponent implements OnInit {
   }
 
   goToPageNumber(pageNumber: number): void {
-    this.getAllMembers(pageNumber);
+    this.getAllBooks(pageNumber);
   }
 
   goToViewPage(id: number|undefined): void {
     if (id)
     {
-      this.router.navigate(['member/view', id]);
+      this.router.navigate(['book/view', id]);
     }
   }
 
   goToUpdatePage(id: number|undefined): void {
     if (id)
     {
-      this.router.navigate(['member/update', id]);
+      this.router.navigate(['book/update', id]);
     }
   }
 
-
+  getDefaultImg(): string {
+    return BookService.defaultImg;
+  }
 }

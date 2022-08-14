@@ -1,0 +1,56 @@
+<div id="content" class="d-flex flex-column">
+    <table class="table table-striped">
+
+        <tbody>
+            <tr *ngFor="let book of books.content">
+                <td>
+                    <div class="d-flex">
+                        <img class="book-img" src="{{book.img ? book.img : getDefaultImg() }}" alt="">
+
+                        <div class="book-container">
+                            <div class="d-flex justify-content-between">
+                                <span>
+                                    <b>{{ book.title }}</b> <i>{{ book.authors ? ' - '+book.authors : '' }}</i>
+                                </span>
+
+                                <span class="book-status {{book.status}}">
+                                    <i>{{ book.status ? 'Khả dụng' : 'Đã được mượn'}}</i>
+                                </span>
+                            </div>
+                            <p>{{ book.description }}</p>
+
+                            <p class="action-group">
+                                <a type="button" class=" btn-secondary" (click)="goToViewPage(book.id)">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                </a>
+                                <a (click)="goToUpdatePage(book.id)" type="button" class=" btn-primary">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                </a>
+                                <a type="button" class=" btn-danger" (click)="deleteBook(book)">
+                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <nav aria-label="Page navigationf" class="d-flex mt-auto justify-content-end">
+        <ul class="pagination">
+            <li class="page-item {{ books.first ? 'disabled': ''}}">
+                <a class="page-link" routerLink="/book/list" [queryParams]="{page: pageNumber}"
+                    (click)="goToPageNumber(pageNumber-1)">Previous</a>
+            </li>
+            <li *ngFor="let page of pagination" class="page-item">
+                <a class="page-link {{pageNumber == page ? 'active': ''}}" routerLink="/book/list"
+                    [queryParams]="{page: page+1}" (click)="goToPageNumber(page)">{{page+1}}</a>
+            </li>
+            <li class="page-item {{ books.last ? 'disabled': ''}}">
+                <a routerLink="/book/list" [queryParams]="{page: pageNumber+2}" (click)="goToPageNumber(pageNumber+1)"
+                    class="page-link">Next</a>
+            </li>
+        </ul>
+    </nav>
+</div>

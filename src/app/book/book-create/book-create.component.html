@@ -1,0 +1,78 @@
+<div id="content" class="col-6 offset-3">
+    <h4>Tạo mới</h4>
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group ">
+            <label for="book-title"></label>
+            <input [(ngModel)]="book.title" type="text" class="form-control" placeholder="Nhập tên sách" id="book-title"
+                name="book-title" required>
+        </div>
+
+        <div class="form-group ">
+            <label for="authors"></label>
+            <input [(ngModel)]="book.authors" type="text" class="form-control" placeholder="Nhập tên tác giả"
+                id="authors" name="authors" required>
+        </div>
+
+        <div class="form-group ">
+            <label for="tag"></label>
+            <input [(ngModel)]="book.tag" type="text" class="form-control" placeholder="Nhập tên từ khoá" id="tag"
+                name="tag" required>
+        </div>
+
+        <div class="form-group ">
+            <label for="status"></label>
+            <select class="form-control" [(ngModel)]="book.status" name="status" id="status">
+                <option value="false">Đã được mượn</option>
+                <option value="true">Khả dụng</option>
+            </select>
+        </div>
+
+        <div class="form-group ">
+            <label for="typeDocument"></label>
+            <select class="form-control" [(ngModel)]="book.typeDocument" name="typeDocument" id="typeDocument">
+                <option value="0">Chọn loại tài liệu</option>
+                <option value="1">Tài liệu điện tử</option>
+                <option value="2">Tài liệu giấy</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="language"></label>
+            <input [(ngModel)]="book.language" type="text" class="form-control" placeholder="Nhập ngôn ngữ"
+                id="language" name="language" required>
+        </div>
+
+        <div class="form-group ">
+            <label for="category"></label>
+            <select class="form-control" [(ngModel)]="selectedCategory" name="category" id="category">
+                <option value="">Chọn thể loại</option>
+                <option *ngFor="let category of categories" value="{{stringify(category)}}">{{category.name}}</option>
+            </select>
+        </div>
+
+        <div class="form-group ">
+            <label for="publisher"></label>
+            <input [(ngModel)]="book.publisher" type="text" class="form-control" placeholder="Nhập tên nhà xuất bản"
+                id="publisher" name="publisher" required>
+        </div>
+
+        <div class="form-group">
+            <label for="description"></label>
+            <textarea rows="5" [(ngModel)]="book.description" name="description" id="description" class="form-control"
+                placeholder="Mô tả sách">
+            </textarea>
+        </div>
+
+
+        <div class="form-group d-flex justify-content-end m-2">
+            <button class="btn btn-primary" type="submit" id="submit">
+                <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                Tạo
+            </button>
+            <a (click)="goBack()" class="btn btn-default">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                Quay Lại
+            </a>
+        </div>
+    </form>
+</div>

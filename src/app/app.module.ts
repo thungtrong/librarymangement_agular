@@ -26,6 +26,11 @@ import { CategoryListComponent } from './category/category-list/category-list.co
 import { CategoryCreateComponent } from './category/category-create/category-create.component';
 import { CategoryUpdateComponent } from './category/category-update/category-update.component';
 import { CategoryViewComponent } from './category/category-view/category-view.component';
+import { BookComponent } from './book/book.component';
+import { BookListComponent } from './book/book-list/book-list.component';
+import { BookCreateComponent } from './book/book-create/book-create.component';
+import { BookViewComponent } from './book/book-view/book-view.component';
+import { BookUpdateComponent } from './book/book-update/book-update.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +55,11 @@ import { CategoryViewComponent } from './category/category-view/category-view.co
     CategoryCreateComponent,
     CategoryUpdateComponent,
     CategoryViewComponent,
+    BookComponent,
+    BookListComponent,
+    BookCreateComponent,
+    BookViewComponent,
+    BookUpdateComponent,
     
   ],
   imports: [

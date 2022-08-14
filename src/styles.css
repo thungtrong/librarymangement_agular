@@ -38,3 +38,31 @@
     margin-left: 5px;
     margin-right: 5px;
 }
+
+.book-container {
+    width: 100%;
+}
+
+.book-img {
+    width: 5vw;
+    margin-right: 10px;
+}
+
+.book-status {
+    font-style: italic;
+    font-weight: bold;
+}
+
+.book-status.true{
+    color: red;
+}
+
+.book-status.false
+{
+    color: blueviolet;
+}
+
+#book-details-table tr th:first-child
+{
+    min-width: 120px;
+}

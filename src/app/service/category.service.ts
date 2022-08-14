@@ -13,6 +13,11 @@ export class CategoryService implements BaseService<Category, number> {
 
   constructor(private httpClient: HttpClient) { }
 
+  public getAll(): Observable<Category[]>
+  {
+    return this.httpClient.get<Category[]>(`${CategoryService.apiUrl}/all`);
+  }
+
   public getList(page: number): Observable<Page<Category>>
   {
     CategoryService.pageNumber = page + 1;

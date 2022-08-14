@@ -56,18 +56,30 @@ export interface Librarian
     dateOfBirth?: Date,
     contact?: string,
     email?: string,
+    
 }
 
 export interface Book
 {
     id?: number,
     title?: string,
-    author?: string,
+    authors?: string,
     tag?: string,
-    status?: boolean,
-    typeDocument?: number,
+    status: boolean,
+    typeDocument: number,
     publisher?: string,
-    img?: string
+    img?: string,
+    description?: string
+    language?: Language,
+    category?: Category
+}
+
+export interface Language
+{
+    id?: number,
+    name?: string,
+    shortname?: string,
+    note?: string
 }
 
 export interface BookIssue 
