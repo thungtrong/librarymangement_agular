@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from 'src/app/model/models';
 import { CategoryService } from 'src/app/service/category.service';
 import { Location } from '@angular/common'
+import { MemberService } from 'src/app/service/member.service';
 @Component({
   selector: 'app-category-update',
   templateUrl: './category-update.component.html',
@@ -18,6 +19,7 @@ export class CategoryUpdateComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    
     let id = this.activatedRoute.snapshot.params['id'];
     this.categoryService.getById(id).subscribe({
       next: (data) => {
@@ -50,7 +52,7 @@ export class CategoryUpdateComponent implements OnInit {
   
   goBack()
   {
-    this.router.navigate(['/category'], {queryParams: {page: this.categoryService.pageNumber+1}})
+    this.router.navigate(['/category'], {queryParams: {page: CategoryService.pageNumber}})
   }
 
 }

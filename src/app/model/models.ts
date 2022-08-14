@@ -27,7 +27,8 @@ export interface Member
     gender?: boolean;
     dateOfBirth?: Date;
     contact?: string;
-    email?: string
+    email?: string;
+    memberType?: MemberType
 }
 
 export interface Category

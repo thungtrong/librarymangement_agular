@@ -8,33 +8,36 @@ import { rootApi, BaseService } from './config.service';
   providedIn: 'root'
 })
 export class CategoryService implements BaseService<Category, number> {
-  private apiUrl: string = `${rootApi}/category`;
-  public pageNumber: number = 1;
-  
+  private static apiUrl: string = `${rootApi}/category`;
+  public static pageNumber: number = 1;
+
   constructor(private httpClient: HttpClient) { }
 
   public getList(page: number): Observable<Page<Category>>
   {
-    return this.httpClient.get<Page<Category>>(`${this.apiUrl}/list?page=${page}`);
+    CategoryService.pageNumber = page + 1;
+    console.log("service", CategoryService.pageNumber);
+    return this.httpClient.get<Page<Category>>(`${CategoryService.apiUrl}/list?page=${page}`);
   }
 
   public create(category: Category): Observable<Category>
   {
-    return this.httpClient.post<Category>(`${this.apiUrl}/add`, category);
+    return this.httpClient.post<Category>(`${CategoryService.apiUrl}/add`, category);
   }
 
   public getById(id: number): Observable<Category>
   {
-    return this.httpClient.get<Category>(`${this.apiUrl}/find/${id}`);
+    console.log("service", CategoryService.pageNumber);
+    return this.httpClient.get<Category>(`${CategoryService.apiUrl}/find/${id}`);
   }
 
   public update(category: Category): Observable<Category>
   {
-    return this.httpClient.put<Category>(`${this.apiUrl}/update`, category);
+    return this.httpClient.put<Category>(`${CategoryService.apiUrl}/update`, category);
   }
 
   public delete(category: Category): Observable<void>
   {
-    return this.httpClient.delete<void>(`${this.apiUrl}/delete`, {body:category});
+    return this.httpClient.delete<void>(`${CategoryService.apiUrl}/delete`, {body:category});
   }
 }

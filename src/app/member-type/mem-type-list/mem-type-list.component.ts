@@ -12,7 +12,8 @@ export class MemTypeListComponent implements OnInit {
   tableHeaders: string[] = ['Tên', 'Mô tả'];
   membertypes: MemberType[] = [];
   constructor(
-    private memtypeService: MemberTypeService
+    private memtypeService: MemberTypeService,
+    private router: Router
     ) { 
   }
 
@@ -41,5 +42,19 @@ export class MemTypeListComponent implements OnInit {
     }
     else
       console.log('ko xoa');
+  }
+
+  goToViewPage(id: number|undefined): void {
+    if (id)
+    {
+      this.router.navigate(['member-type/view', id]);
+    }
+  }
+
+  goToUpdatePage(id: number|undefined): void {
+    if (id)
+    {
+      this.router.navigate(['member-type/update', id]);
+    }
   }
 }

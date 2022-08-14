@@ -29,6 +29,6 @@ export class MemberViewComponent implements OnInit {
 
   goBack()
   {
-    this.router.navigate(['/member']);
+    this.router.navigate(['/member'], {queryParams: {page: MemberService.pageNumber}});
   }
 }

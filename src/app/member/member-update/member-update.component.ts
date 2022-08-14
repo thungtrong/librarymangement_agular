@@ -47,17 +47,13 @@ export class MemberUpdateComponent implements OnInit {
     this.memberService.update(member).subscribe(
       {
         next: (data) => { 
-          this.goToMemberList();
+          this.goBack();
         },
         error: err => console.log(err)
       }
     );
   }
 
-  private goToMemberList()
-  {
-    this.router.navigate(['/member']);
-  }
 
   onSubmit(): void {
     this.saveMember(this.member);
@@ -66,7 +62,7 @@ export class MemberUpdateComponent implements OnInit {
   
   goBack()
   {
-    this.router.navigate(['/member']);
+    this.router.navigate(['/member'], {queryParams: {page: MemberService.pageNumber}});
   }
 
   stringify(obj: Object): string {

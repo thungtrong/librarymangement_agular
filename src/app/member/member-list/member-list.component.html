@@ -17,12 +17,15 @@
                 <td>{{ member.dateOfBirth }}</td>
                 <td>{{ member.memberType ? member.memberType.name : ''}}</td>
                 <td class="action-group">
-                    <a type="button" class="btn btn-secondary" href="member/view/{{member.id}}"><i class="fa fa-eye"
-                            aria-hidden="true"></i></a>
-                    <a href="member/update/{{member.id}}" type="button" class="btn btn-primary"><i
-                            class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                    <a type="button" class="btn btn-danger" (click)="deleteMember(member)"><i class="fa fa-trash-o"
-                            aria-hidden="true"></i></a>
+                    <a type="button" class="btn btn-secondary" (click)="goToViewPage(member.id)">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                    </a>
+                    <a (click)="goToUpdatePage(member.id)" type="button" class="btn btn-primary">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </a>
+                    <a type="button" class="btn btn-danger" (click)="deleteMember(member)">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </a>
                 </td>
             </tr>
         </tbody>

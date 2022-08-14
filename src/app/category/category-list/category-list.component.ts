@@ -17,6 +17,7 @@ export class CategoryListComponent implements OnInit {
   constructor(
     private categoryService: CategoryService,
     private activatedRoute: ActivatedRoute,
+    private router: Router
     ) { 
   }
 
@@ -29,12 +30,10 @@ export class CategoryListComponent implements OnInit {
   private getAllCategorys(page: number): void {
     this.categoryService.getList(page).subscribe(
       data => {
-        // console.log(data);
+        console.log(data);
         this.categories = data;
         this.totalPages = data.totalPages ? data.totalPages : 1;
         this.pageNumber = data.pageable.pageNumber;
-        this.categoryService.pageNumber = this.pageNumber;
-        // console.log(this.pageNumber);
         this.rangePagination();
       }
     );
@@ -46,7 +45,7 @@ export class CategoryListComponent implements OnInit {
     if (choose) {
       this.categoryService.delete(category).subscribe({
         next: () => {
-          this.getAllCategorys(0);
+          this.getAllCategorys(CategoryService.pageNumber);
         },
         error: (error) => console.log(error)
       });
@@ -70,4 +69,17 @@ export class CategoryListComponent implements OnInit {
     this.getAllCategorys(pageNumber);
   }
 
+  goToViewPage(id: number|undefined): void {
+    if (id)
+    {
+      this.router.navigate(['category/view', id]);
+    }
+  }
+
+  goToUpdatePage(id: number|undefined): void {
+    if (id)
+    {
+      this.router.navigate(['category/update', id]);
+    }
+  }
 }

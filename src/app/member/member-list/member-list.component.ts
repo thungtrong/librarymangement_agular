@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Member, Page } from 'src/app/model/models';
 import { MemberService } from 'src/app/service/member.service';
 
@@ -16,8 +16,9 @@ export class MemberListComponent implements OnInit {
   totalPages: number = 1;
   pagination: number[] = [1];
   constructor(
-    private memtypeService: MemberService,
+    private memberService: MemberService,
     private activatedRoute: ActivatedRoute,
+    private router: Router
     ) { 
   }
 
@@ -28,12 +29,13 @@ export class MemberListComponent implements OnInit {
   }
 
   private getAllMembers(page: number): void {
-    this.memtypeService.getList(page).subscribe(
+    this.memberService.getList(page).subscribe(
       data => {
         console.log(data);
         this.members = data;
         this.pageNumber = data.pageable.pageNumber;
         this.totalPages = data.totalPages;
+        
         this.rangePagination();
       }
     );
@@ -42,7 +44,7 @@ export class MemberListComponent implements OnInit {
   deleteMember(memtype: Member){
     let choose = confirm(`Bạn có chắc chắn muốn xoá ?`);
     if (choose) {
-      this.memtypeService.delete(memtype).subscribe({
+      this.memberService.delete(memtype).subscribe({
         next: () => {
           this.getAllMembers(0);
         },
@@ -67,5 +69,20 @@ export class MemberListComponent implements OnInit {
   goToPageNumber(pageNumber: number): void {
     this.getAllMembers(pageNumber);
   }
+
+  goToViewPage(id: number|undefined): void {
+    if (id)
+    {
+      this.router.navigate(['member/view', id]);
+    }
+  }
+
+  goToUpdatePage(id: number|undefined): void {
+    if (id)
+    {
+      this.router.navigate(['member/update', id]);
+    }
+  }
+
 
 }

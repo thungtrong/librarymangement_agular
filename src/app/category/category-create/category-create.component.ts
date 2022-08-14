@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Category } from 'src/app/model/models';
 import { CategoryService } from 'src/app/service/category.service';
+import { MemberService } from 'src/app/service/member.service';
 
 @Component({
   selector: 'app-category-create',
@@ -44,7 +45,7 @@ export class CategoryCreateComponent implements OnInit {
   
   goBack()
   {
-    this.router.navigate(['/category'], {queryParams: {page: this.categoryService.pageNumber}});
+    this.router.navigate(['/category'], {queryParams: {page: CategoryService.pageNumber}});
   }
 
 }

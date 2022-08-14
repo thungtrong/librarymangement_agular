@@ -9,11 +9,13 @@ import { BaseService, rootApi } from './config.service';
 })
 export class MemberService implements BaseService<Member, number> {
   private apiUrl: string = `${rootApi}/member`;
-  
+  public static pageNumber: number = 1;
+
   constructor(private httpClient: HttpClient) { }
 
   public getList(page: number): Observable<Page<Member>>
   {
+    MemberService.pageNumber = page + 1;
     return this.httpClient.get<Page<Member>>(`${this.apiUrl}/list?page=${page}`);
   }
 

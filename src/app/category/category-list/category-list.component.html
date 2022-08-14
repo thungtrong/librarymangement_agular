@@ -8,13 +8,13 @@
                     <p>{{ category.description }}</p>
 
                     <p class="action-group">
-                        <a type="button" href="category/view/{{category.id}}">
+                        <a type="button" class=" btn-secondary" (click)="goToViewPage(category.id)">
                             <i class="fa fa-eye" aria-hidden="true"></i>
-                        </a> |
-                        <a href="category/update/{{category.id}}" type="button">
+                        </a>
+                        <a (click)="goToUpdatePage(category.id)" type="button" class=" btn-primary">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                        </a> |
-                        <a type="button" class="btn-primary" (click)="deleteCategory(category)">
+                        </a>
+                        <a type="button" class=" btn-danger" (click)="deleteCategory(category)">
                             <i class="fa fa-trash-o" aria-hidden="true"></i>
                         </a>
                     </p>
