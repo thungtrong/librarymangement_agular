@@ -1,0 +1,53 @@
+<div id="content" class="col-6 offset-3">
+    <h4>Cập nhật</h4>
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group row">
+            <div class="col">
+                <label for="lastName"></label>
+                <input [(ngModel)]="librarian.lastName" type="text" class="form-control" placeholder="Nhập họ thủ thư"
+                    id="lastName" name="lastName" required>
+            </div>
+
+            <div class="col">
+                <label for="firstName"></label>
+                <input [(ngModel)]="librarian.firstName" type="text" class="form-control" placeholder="Nhập tên thủ thư"
+                    id="firstName" name="firstName" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="gender"></label>
+            <select [(ngModel)]="librarian.gender" name="gender" id="gender" class="form-control">
+                <option value="undefined">Chọn giới tính</option>
+                <option value="true">Nam</option>
+                <option value="false">Nữ</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="dateOfBirth"></label>
+            <input [(ngModel)]="librarian.dateOfBirth" class="form-control" type="date" id="dateOfBirth"
+                name="dateOfBirth">
+        </div>
+
+        <div class="form-group">
+            <label for="contact"></label>
+            <input [(ngModel)]="librarian.contact" class="form-control" type="text" id="contact" name="contact"
+                placeholder="Nhập số điện thoại">
+        </div>
+
+        <div class="form-group">
+            <label for="email"></label>
+            <input [(ngModel)]="librarian.email" class="form-control" type="text" id="email" name="email"
+                placeholder="Nhập email thủ thư">
+        </div>
+
+
+        <div class="form-group d-flex justify-content-end m-2">
+            <button class="btn btn-primary" type="submit" id="submit">
+                <i class="fa fa-floppy-o" aria-hidden="true"></i>Cập nhật</button>
+            <a (click)="goBack()" class="btn btn-default">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i> Quay Lại</a>
+        </div>
+    </form>
+</div>

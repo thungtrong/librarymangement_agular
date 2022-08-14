@@ -1,0 +1,48 @@
+<div id="content" class="d-flex flex-column">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th *ngFor="let header of tableHeaders"> {{header}} </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let librarian of librarians.content">
+                <td>
+                    {{ librarian.lastName }}
+                </td>
+                <td>{{ librarian.firstName }}</td>
+                <td>{{ librarian.gender ? 'Nam' : 'Nữ'}}</td>
+                <td>{{ librarian.contact }}</td>
+                <td>{{ librarian.dateOfBirth }}</td>
+                <td class="action-group">
+                    <a type="button" class="btn btn-secondary" (click)="goToViewPage(librarian.id)">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                    </a>
+                    <a (click)="goToUpdatePage(librarian.id)" type="button" class="btn btn-primary">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </a>
+                    <a type="button" class="btn btn-danger" (click)="deleteLibrarian(librarian)">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <nav aria-label="Page navigationf" class="d-flex mt-auto justify-content-end">
+        <ul class="pagination">
+            <li class="page-item {{ librarians.first ? 'disabled': ''}}">
+                <a class="page-link" routerLink="/librarian/list" [queryParams]="{page: pageNumber}"
+                    (click)="goToPageNumber(pageNumber-1)">Previous</a>
+            </li>
+            <li *ngFor="let page of pagination" class="page-item">
+                <a class="page-link {{pageNumber == page ? 'active': ''}}" routerLink="/librarian/list"
+                    [queryParams]="{page: page+1}" (click)="goToPageNumber(page)">{{page+1}}</a>
+            </li>
+            <li class="page-item {{ librarians.last ? 'disabled': ''}}">
+                <a routerLink="/librarian/list" [queryParams]="{page: pageNumber+2}"
+                    (click)="goToPageNumber(pageNumber+1)" class="page-link">Next</a>
+            </li>
+        </ul>
+    </nav>
+</div>

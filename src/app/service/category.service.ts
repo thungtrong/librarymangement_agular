@@ -21,7 +21,6 @@ export class CategoryService implements BaseService<Category, number> {
   public getList(page: number): Observable<Page<Category>>
   {
     CategoryService.pageNumber = page + 1;
-    console.log("service", CategoryService.pageNumber);
     return this.httpClient.get<Page<Category>>(`${CategoryService.apiUrl}/list?page=${page}`);
   }
 

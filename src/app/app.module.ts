@@ -31,6 +31,11 @@ import { BookListComponent } from './book/book-list/book-list.component';
 import { BookCreateComponent } from './book/book-create/book-create.component';
 import { BookViewComponent } from './book/book-view/book-view.component';
 import { BookUpdateComponent } from './book/book-update/book-update.component';
+import { LibrarianComponent } from './librarian/librarian.component';
+import { LibrarianListComponent } from './librarian/librarian-list/librarian-list.component';
+import { LibrarianCreateComponent } from './librarian/librarian-create/librarian-create.component';
+import { LibrarianViewComponent } from './librarian/librarian-view/librarian-view.component';
+import { LibrarianUpdateComponent } from './librarian/librarian-update/librarian-update.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +65,11 @@ import { BookUpdateComponent } from './book/book-update/book-update.component';
     BookCreateComponent,
     BookViewComponent,
     BookUpdateComponent,
+    LibrarianComponent,
+    LibrarianListComponent,
+    LibrarianCreateComponent,
+    LibrarianViewComponent,
+    LibrarianUpdateComponent,
     
   ],
   imports: [

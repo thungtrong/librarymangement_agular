@@ -10,6 +10,11 @@ import { CategoryListComponent } from './category/category-list/category-list.co
 import { CategoryUpdateComponent } from './category/category-update/category-update.component';
 import { CategoryViewComponent } from './category/category-view/category-view.component';
 import { CategoryComponent } from './category/category.component';
+import { LibrarianCreateComponent } from './librarian/librarian-create/librarian-create.component';
+import { LibrarianListComponent } from './librarian/librarian-list/librarian-list.component';
+import { LibrarianUpdateComponent } from './librarian/librarian-update/librarian-update.component';
+import { LibrarianViewComponent } from './librarian/librarian-view/librarian-view.component';
+import { LibrarianComponent } from './librarian/librarian.component';
 import { LoginComponent } from './login/login.component';
 import { MemTypeCreateComponent } from './member-type/mem-type-create/mem-type-create.component';
 import { MemTypeListComponent } from './member-type/mem-type-list/mem-type-list.component';
@@ -64,6 +69,16 @@ const routes: Routes = [
           {path: 'update/:id', component: BookUpdateComponent},
           {path: 'view/:id', component: BookViewComponent},
           {path: '', component: BookListComponent}
+        ]
+      },
+      {
+        path: 'librarian', component: LibrarianComponent, title: "Thủ Thư",
+        children: [
+          {path: 'list', component: LibrarianListComponent},
+          {path: 'create', component: LibrarianCreateComponent},
+          {path: 'update/:id', component: LibrarianUpdateComponent},
+          {path: 'view/:id', component: LibrarianViewComponent},
+          {path: '', component: LibrarianListComponent}
         ]
       },
     ]

@@ -37,18 +37,13 @@ export class MemberCreateComponent implements OnInit {
       {
         next: (data) => {
           // console.log(data);  
-          this.goToMemberList();
+          this.goBack();
         },
         error: err => console.log(err)
       }
     );
   }
-
-  private goToMemberList()
-  {
-    this.router.navigate(['/member']);
-  }
-
+  
   onSubmit(): void {
     this.saveMember(this.member);
   }
