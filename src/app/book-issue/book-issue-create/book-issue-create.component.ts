@@ -13,7 +13,6 @@ import { MemberService } from 'src/app/service/member.service';
 export class BookIssueCreateComponent implements OnInit {
 
   bookIssue: BookIssue = {dateStart: this.currentDateString(), dateEnd: '', status: false, books: [], member: {}};
-  books: Book[] = [];
   selectedBooks: Book[] = [];
   selectedMember: Member = {};
   
@@ -97,6 +96,11 @@ export class BookIssueCreateComponent implements OnInit {
   receiveBook($event: Book)
   {
     this.selectedBooks.push($event);
+  }
+
+  removeItem(i: number)
+  {
+    this.selectedBooks.splice(i, 1);
   }
 
   private currentDateString() {

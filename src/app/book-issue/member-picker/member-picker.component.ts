@@ -40,6 +40,7 @@ export class MemberPickerComponent implements OnInit {
     if (lastname === "" && firstname === "")
     {
       alert("Hãy nhập một trong hai");
+      return;
     }
     this.memberService.findByName(lastname, firstname).subscribe({
       next: (data) => {

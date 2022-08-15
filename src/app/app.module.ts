@@ -43,6 +43,7 @@ import { BookIssueUpdateComponent } from './book-issue/book-issue-update/book-is
 import { BookIssueViewComponent } from './book-issue/book-issue-view/book-issue-view.component';
 import { BookPickerComponent } from './book-issue/book-picker/book-picker.component';
 import { MemberPickerComponent } from './book-issue/member-picker/member-picker.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,7 @@ import { MemberPickerComponent } from './book-issue/member-picker/member-picker.
     BookIssueViewComponent,
     BookPickerComponent,
     MemberPickerComponent,
+    DashboardComponent,
     
   ],
   imports: [

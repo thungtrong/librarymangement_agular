@@ -67,11 +67,11 @@
                     <th></th>
                 </tr>
 
-                <tr *ngFor="let book of selectedBooks">
+                <tr *ngFor="let book of selectedBooks;index as i">
                     <td>{{ book.title }}</td>
                     <td>{{ book.authors }}</td>
                     <td>
-                        <button class="btn btn-danger" type="button" id="change-member">
+                        <button class="btn btn-danger" type="button" id="change-member" (click)="removeItem(i)">
                             <i class="fa fa-trash-o" aria-hidden="true"></i>
                         </button>
                     </td>
