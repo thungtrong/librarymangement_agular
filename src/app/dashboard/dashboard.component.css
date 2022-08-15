@@ -1,0 +1,54 @@
+
+a {
+    text-decoration: none;
+}
+
+.block {
+    height: max-content;
+    text-align: left;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-right: 2px solid rgb(136, 113, 113);
+    opacity: 0.7;
+}
+
+.block:hover
+{
+    opacity: 1
+}
+
+.block:nth-child(1)
+{
+    color: red;
+}
+
+.block:nth-child(2)
+{
+    color: rgb(158, 134, 134);
+}
+
+.block:nth-child(3)
+{
+    color: rgb(246, 116, 36);
+}
+.block:nth-child(4)
+{
+    color: rgb(65, 20, 247);
+}
+.block:nth-child(5)
+{
+    color: rgb(1, 176, 100);
+}
+.block:nth-child(6)
+{
+    color: rgb(75, 118, 56);
+}
+.block .count {
+    text-align: left;
+    font-size: 2em;
+}
+
+.block:last-child
+{
+    border: none;
+}

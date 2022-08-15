@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="header-container d-flex justify-content-between" id="header-container">
+        <span id="title">Bảng Điều Khiển</span>
+    </div>
+
+    <div id="content" class="row">
+        <a class="block col-2" *ngFor="let control of controls;index as i" routerLink="/{{control.key}}">
+            <p><i class="{{icons[i]}}" aria-hidden="true"></i> {{control.displayname}}</p>
+            <p class="count">
+                {{control.count}}
+            </p>
+        </a>
+    </div>
+</div>

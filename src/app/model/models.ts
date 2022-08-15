@@ -93,3 +93,15 @@ export interface BookIssue
     books: Book[],
     librarian?: Librarian,
 }
+
+export interface Info
+{
+    key: string,
+    displayname: string,
+    count: number
+}
+
+export interface DashBoard
+{
+    list: Info[]
+}

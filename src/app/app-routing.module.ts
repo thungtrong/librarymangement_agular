@@ -15,6 +15,7 @@ import { CategoryListComponent } from './category/category-list/category-list.co
 import { CategoryUpdateComponent } from './category/category-update/category-update.component';
 import { CategoryViewComponent } from './category/category-view/category-view.component';
 import { CategoryComponent } from './category/category.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { LibrarianCreateComponent } from './librarian/librarian-create/librarian-create.component';
 import { LibrarianListComponent } from './librarian/librarian-list/librarian-list.component';
 import { LibrarianUpdateComponent } from './librarian/librarian-update/librarian-update.component';
@@ -36,6 +37,9 @@ import { RootComponent } from './root/root.component';
 const routes: Routes = [
   {path: '', component: RootComponent,
     children: [
+      {
+        path: 'dashboard', component: DashboardComponent, title: "Bảng điều khiển"
+      },
       {
         path: 'member-type', component: MemberTypeComponent, title: "Loại Thành Viên",
         children: [
@@ -96,6 +100,10 @@ const routes: Routes = [
           {path: '', component: BookIssueListComponent}
         ]
       },
+
+      {
+        path: '', redirectTo: 'dashboard', pathMatch: 'full'
+      }
     ]
   },
   {path: 'login', component: LoginComponent, title: "Login In"}
