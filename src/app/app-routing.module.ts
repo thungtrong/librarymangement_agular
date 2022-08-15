@@ -1,5 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BookIssueCreateComponent } from './book-issue/book-issue-create/book-issue-create.component';
+import { BookIssueListComponent } from './book-issue/book-issue-list/book-issue-list.component';
+import { BookIssueUpdateComponent } from './book-issue/book-issue-update/book-issue-update.component';
+import { BookIssueViewComponent } from './book-issue/book-issue-view/book-issue-view.component';
+import { BookIssueComponent } from './book-issue/book-issue.component';
 import { BookCreateComponent } from './book/book-create/book-create.component';
 import { BookListComponent } from './book/book-list/book-list.component';
 import { BookUpdateComponent } from './book/book-update/book-update.component';
@@ -79,6 +84,16 @@ const routes: Routes = [
           {path: 'update/:id', component: LibrarianUpdateComponent},
           {path: 'view/:id', component: LibrarianViewComponent},
           {path: '', component: LibrarianListComponent}
+        ]
+      },
+      {
+        path: 'book-issue', component: BookIssueComponent, title: "Phiếu Mượn Sách",
+        children: [
+          {path: 'list', component: BookIssueListComponent},
+          {path: 'create', component: BookIssueCreateComponent},
+          {path: 'update/:id', component: BookIssueUpdateComponent},
+          {path: 'view/:id', component: BookIssueViewComponent},
+          {path: '', component: BookIssueListComponent}
         ]
       },
     ]

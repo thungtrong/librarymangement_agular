@@ -2,6 +2,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
+body {
+    overflow-x: hidden;
+    position: relative;
+    width: 100%;
+}
+
 #header-container #title
 {
     font-size: 2rem;
@@ -15,7 +21,7 @@
 
 #content
 {
-    min-height: 74.8vh;
+    min-height: 77vh;
 }
 
 #footer {
@@ -33,6 +39,11 @@
 {
     width: 12vw;
 }
+
+.action-group.small {
+    width: 5vw;
+}
+
 .action-group a
 {
     margin-left: 5px;
@@ -65,4 +76,36 @@
 #book-details-table tr th:first-child
 {
     min-width: 120px;
+}
+
+.model {
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: none;
+}
+
+.model .btn-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+
+.model #model-content {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    min-height: 50vh;
+    min-width: 60vw;
+}
+
+#selected-book-container
+{
+    min-height: 30vh;
 }

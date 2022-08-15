@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Member, Page } from '../model/models';
@@ -37,5 +37,10 @@ export class MemberService implements BaseService<Member, number> {
   public delete(member: Member): Observable<void>
   {
     return this.httpClient.delete<void>(`${this.apiUrl}/delete`, {body:member});
+  }
+
+  public findByName(lastName: string, firstName: string): Observable<Member[]>
+  {
+    return this.httpClient.get<Member[]>(`${this.apiUrl}/find-by-name?firstname=${firstName}&lastname=${lastName}`);
   }
 }

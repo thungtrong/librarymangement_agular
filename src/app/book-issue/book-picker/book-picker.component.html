@@ -1,0 +1,41 @@
+<dialog id="dialog-book-picker" class="model d-none">
+    <button type="button" class="btn-close btn-close-white" aria-label="Close" (click)="toggleDialog()"></button>
+    <div id="model-content" class="d-flex flex-column">
+        <div class="filter mb-2">
+            <form class="row">
+                <div class="col">
+                    <label for="title" class="sr-only"></label>
+                    <input type="text" class="form-control" id="title" placeholder="Nhập tiêu đề sách" #title>
+                </div>
+                <button type="submit" class="btn btn-primary col-1" (click)="search(title.value)">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+            </form>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th *ngFor="let header of tableHeaders"> {{header}} </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let book of books">
+                    <td>
+                        {{ book.title }}
+                    </td>
+                    <td>{{ book.authors }}</td>
+                    <td>{{ book.category ? book.category.name : '' }}</td>
+                    <td>{{ book.language }}</td>
+                    <td class="action-group small">
+                        <a type="button" class="btn btn-secondary" (click)="chooseBook(book)">
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</dialog>

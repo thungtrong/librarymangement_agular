@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   constructor(private router: Router){}
 
   ngOnInit(): void {
-    if (localStorage.getItem('user') == null) {
+    if (localStorage.getItem('librarian') == null) {
       this.router.navigate(['/login'])
     }
   }

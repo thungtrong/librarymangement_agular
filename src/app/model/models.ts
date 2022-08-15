@@ -85,8 +85,11 @@ export interface Language
 export interface BookIssue 
 {
     id?: number,
-    dateStart?: Date,
-    dateEnd?: Date,
+    dateStart: string,
+    dateEnd: string,
     note?: string,
-    status?: boolean
+    status: boolean,
+    member: Member,
+    books: Book[],
+    librarian?: Librarian,
 }

@@ -15,6 +15,10 @@ export class LoginComponent implements OnInit {
      private accountService: AccountService) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem('librarian'))
+    {
+      this.router.navigate(['/']);
+    }
   }
   
   onSubmit()
@@ -25,7 +29,7 @@ export class LoginComponent implements OnInit {
       console.log(account);
       if (account.password == this.password)
       {
-        localStorage.setItem('user', JSON.stringify(account));
+        localStorage.setItem('librarian', JSON.stringify(account));
         this.router.navigate(['/']);
       }
       else {

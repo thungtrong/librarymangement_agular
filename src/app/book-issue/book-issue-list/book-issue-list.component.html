@@ -1,0 +1,49 @@
+<div id="content" class="d-flex flex-column">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th *ngFor="let header of tableHeaders"> {{header}} </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let bookIssue of bookIssues.content">
+                <td>
+                    {{ bookIssue.member ? bookIssue.member.lastName +' '+bookIssue.member.firstName : '' }}
+                </td>
+                <td>{{ bookIssue.dateStart }}</td>
+                <td>{{ bookIssue.dateEnd }}</td>
+                <td>{{ getStatus(bookIssue) }}</td>
+                <td>{{ bookIssue.note }}</td>
+
+                <td class="action-group">
+                    <a type="button" class="btn btn-secondary" (click)="goToViewPage(bookIssue)">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                    </a>
+                    <a (click)="goToUpdatePage(bookIssue)" type="button" class="btn btn-primary">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </a>
+                    <a type="button" class="btn btn-danger" (click)="deleteBookIssue(bookIssue)">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <nav aria-label="Page navigationf" class="d-flex mt-auto justify-content-end">
+        <ul class="pagination">
+            <li class="page-item {{ bookIssues.first ? 'disabled': ''}}">
+                <a class="page-link" routerLink="/book-issue/list" [queryParams]="{page: pageNumber}"
+                    (click)="goToPageNumber(pageNumber-1)">Previous</a>
+            </li>
+            <li *ngFor="let page of pagination" class="page-item">
+                <a class="page-link {{pageNumber == page ? 'active': ''}}" routerLink="/book-issue/list"
+                    [queryParams]="{page: page+1}" (click)="goToPageNumber(page)">{{page+1}}</a>
+            </li>
+            <li class="page-item {{ bookIssues.last ? 'disabled': ''}}">
+                <a routerLink="/book-issue/list" [queryParams]="{page: pageNumber+2}"
+                    (click)="goToPageNumber(pageNumber+1)" class="page-link">Next</a>
+            </li>
+        </ul>
+    </nav>
+</div>

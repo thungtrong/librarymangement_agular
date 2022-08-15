@@ -36,6 +36,13 @@ import { LibrarianListComponent } from './librarian/librarian-list/librarian-lis
 import { LibrarianCreateComponent } from './librarian/librarian-create/librarian-create.component';
 import { LibrarianViewComponent } from './librarian/librarian-view/librarian-view.component';
 import { LibrarianUpdateComponent } from './librarian/librarian-update/librarian-update.component';
+import { BookIssueComponent } from './book-issue/book-issue.component';
+import { BookIssueListComponent } from './book-issue/book-issue-list/book-issue-list.component';
+import { BookIssueCreateComponent } from './book-issue/book-issue-create/book-issue-create.component';
+import { BookIssueUpdateComponent } from './book-issue/book-issue-update/book-issue-update.component';
+import { BookIssueViewComponent } from './book-issue/book-issue-view/book-issue-view.component';
+import { BookPickerComponent } from './book-issue/book-picker/book-picker.component';
+import { MemberPickerComponent } from './book-issue/member-picker/member-picker.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +77,13 @@ import { LibrarianUpdateComponent } from './librarian/librarian-update/librarian
     LibrarianCreateComponent,
     LibrarianViewComponent,
     LibrarianUpdateComponent,
+    BookIssueComponent,
+    BookIssueListComponent,
+    BookIssueCreateComponent,
+    BookIssueUpdateComponent,
+    BookIssueViewComponent,
+    BookPickerComponent,
+    MemberPickerComponent,
     
   ],
   imports: [

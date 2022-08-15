@@ -1,0 +1,45 @@
+<dialog id="dialog-member-picker" class="model d-none">
+    <button type="button" class="btn-close btn-close-white" aria-label="Close" (click)="toggleDialog()"></button>
+    <div id="model-content" class="d-flex flex-column">
+        <div class="filter mb-2">
+            <form class="row">
+                <div class="col">
+                    <label for="lastName" class="sr-only"></label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Nhập họ thành viên" #lastName>
+                </div>
+                <div class="col">
+                    <label for="firstName" class="sr-only"></label>
+                    <input type="text" class="form-control" id="firstName" placeholder="Nhập tên thành viên" #firstName>
+                </div>
+                <button type="submit" class="btn btn-primary col-1" (click)="search(lastName.value, firstName.value)">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+            </form>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th *ngFor="let header of tableHeaders"> {{header}} </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let member of members">
+                    <td>
+                        {{ member.lastName }}
+                    </td>
+                    <td>{{ member.firstName }}</td>
+                    <td>{{ member.contact }}</td>
+                    <td>{{ member.dateOfBirth }}</td>
+                    <td class="action-group small">
+                        <a type="button" class="btn btn-secondary" (click)="chooseMember(member)">
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</dialog>

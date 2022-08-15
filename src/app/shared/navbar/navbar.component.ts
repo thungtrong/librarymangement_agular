@@ -11,10 +11,16 @@ export class NavbarComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    let u = localStorage.getItem('librarian');
+    if (u)
+    {
+      let librarian = JSON.parse(u);
+      this.name = librarian.lastName + ' ' + librarian.firstName;
+    }
   }
 
   logout(): void {
-    localStorage.removeItem("user");
+    localStorage.removeItem("librarian");
     this.router.navigate(['/login']);
   }
 
