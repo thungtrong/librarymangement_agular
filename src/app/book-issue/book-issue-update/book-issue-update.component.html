@@ -4,19 +4,20 @@
         <div class="row">
             <div class="col">
                 <label for="lastName" class="sr-only"></label>
-                <input disabled [(ngModel)]="bookIssue.member.lastName" type="text" class="form-control" id="lastName"
+                <input disabled [(ngModel)]="selectedMember.lastName" type="text" class="form-control" id="lastName"
                     name="lastName" placeholder="Nhập họ thành viên" #lastName>
             </div>
             <div class="col">
                 <label for="firstName" class="sr-only"></label>
-                <input disabled [(ngModel)]="bookIssue.member.firstName" type="text" class="form-control" id="firstName"
+                <input disabled [(ngModel)]="selectedMember.firstName" type="text" class="form-control" id="firstName"
                     name="firstName" placeholder="Nhập tên thành viên" #firstName>
             </div>
 
-            <button class="btn btn-primary col-1" type="button" id="change-member" disabled>
+            <button class="btn btn-primary col-1" type="button" id="change-member" (click)="toggleMemberDialog()">
                 <i class="fa fa-repeat" aria-hidden="true"></i>
             </button>
         </div>
+        <app-member-picker (selectEvent)="receiveMember($event)"></app-member-picker>
 
 
         <div class="form-group row mt-4 mb-4">
@@ -49,7 +50,7 @@
                 <span>
                     <h4>Danh sách sách mượn:</h4>
                 </span>
-                <button class="btn btn-primary col-1" type="button" id="change-member" disabled>
+                <button class="btn btn-primary col-1" type="button" id="change-member" (click)="toggleBookDialog()">
                     <i class="fa fa-repeat" aria-hidden="true"></i>
                 </button>
             </div>
@@ -66,17 +67,19 @@
                     <th></th>
                 </tr>
 
-                <tr *ngFor="let book of bookIssue.books">
+                <tr *ngFor="let book of selectedBooks;index as i">
                     <td>{{ book.title }}</td>
                     <td>{{ book.authors }}</td>
                     <td>
-                        <!-- <button class="btn btn-danger" type="button" id="change-member">
+                        <button class="btn btn-danger" type="button" id="change-member" (click)="removeItem(i)">
                             <i class="fa fa-trash-o" aria-hidden="true"></i>
-                        </button> -->
+                        </button>
                     </td>
                 </tr>
             </table>
         </div>
+        <app-book-picker (selectEvent)="receiveBook($event)"></app-book-picker>
+
 
         <div class="form-group d-flex justify-content-end m-2">
             <button class="btn btn-primary" type="submit" id="submit">

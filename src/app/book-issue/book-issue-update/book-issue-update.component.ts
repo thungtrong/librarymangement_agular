@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BookIssue } from 'src/app/model/models';
+import { Book, BookIssue, Member } from 'src/app/model/models';
 import { BookIssueService } from 'src/app/service/book-issue.service';
 
 @Component({
@@ -11,48 +11,54 @@ import { BookIssueService } from 'src/app/service/book-issue.service';
 export class BookIssueUpdateComponent implements OnInit {
 
   bookIssue: BookIssue = {dateStart: this.currentDateString(), dateEnd: '', status: false, books: [], member: {}};
-
-  constructor(
-    private bookIssueService: BookIssueService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute
-  ) { 
-    this.bookIssue = BookIssueService.selectedBookIssue;
-  } 
+  selectedBooks: Book[] = [];
+  selectedMember: Member = {};
+  
+  constructor(private bookIssueService: BookIssueService,
+              private router: Router,
+              private activatedRoute: ActivatedRoute
+              ) {    
+   }
 
   ngOnInit(): void {
     let id = this.activatedRoute.snapshot.params['id'];
-    if (!this.bookIssue || this.bookIssue.id !== id) {
-      this.bookIssueService.getById(id).subscribe({
-        next: (data) => {
-          this.bookIssue = data;
-
-          console.log(this.bookIssue);
-        },
-        error: (err) => {console.log(err)}
-      });
+    this.bookIssueService.getById(id).subscribe({
+      next: (data) => {
+        this.bookIssue = data;
+        this.selectedBooks = data.books;
+        this.selectedMember = data.member;
+      },
+      error: (err) => {console.log(err)}
+    });
+    
+    let u = localStorage.getItem('librarian');
+    if (u) {
+      let librarian = JSON.parse(u);
+      this.bookIssue.librarian = librarian;
     }
+
   }
 
-  
   private saveBookIssue(bookIssue: BookIssue)
   {
-    if (this.bookIssue.books.length < 0)
+    if (this.selectedBooks.length < 0)
     {
       alert("Chưa chọn bất kỳ sách nào");
       return;
     }
 
-    if (!this.bookIssue.member.id)
+    if (!this.selectedMember.id)
     {
       alert("Chưa chọn thành viên mượn sách");
       return;
     }
 
-    for (let book of this.bookIssue.books)
+    bookIssue.member = this.selectedMember;
+    for (let book of this.selectedBooks)
     {
       book.status = false;
     }
+    bookIssue.books = this.selectedBooks;
 
     this.bookIssueService.update(bookIssue).subscribe(
       {
@@ -74,6 +80,37 @@ export class BookIssueUpdateComponent implements OnInit {
   goBack()
   {
     this.router.navigate(['/book-issue'], {queryParams: {page: BookIssueService.pageNumber}});
+  }
+
+  stringify(obj: Object): string {
+    return JSON.stringify(obj);
+  }
+
+  toggleMemberDialog()
+  {
+    let dialog = document.getElementById('dialog-member-picker');
+    dialog?.classList.toggle('d-none');
+  }
+
+  receiveMember($event: Member)
+  {
+    this.selectedMember = $event;
+  }
+
+  toggleBookDialog()
+  {
+    let dialog = document.getElementById('dialog-book-picker');
+    dialog?.classList.toggle('d-none');
+  }
+
+  receiveBook($event: Book)
+  {
+    this.selectedBooks.push($event);
+  }
+
+  removeItem(i: number)
+  {
+    this.selectedBooks.splice(i, 1);
   }
 
   private currentDateString() {
