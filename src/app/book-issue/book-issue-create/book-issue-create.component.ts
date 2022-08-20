@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Book, BookIssue, Member } from 'src/app/model/models';
@@ -18,6 +19,7 @@ export class BookIssueCreateComponent implements OnInit {
   
   constructor(private bookIssueService: BookIssueService,
               private router: Router,
+              private location: Location
               ) {    
    }
 
@@ -55,7 +57,7 @@ export class BookIssueCreateComponent implements OnInit {
         next: (data) => {
           if (data)
           {
-            this.goBack();
+            this.router.navigate(['/book-issue'], {queryParams: {page: BookIssueService.pageNumber+1}});
           }
         },
         error: err => console.log(err)
@@ -69,7 +71,7 @@ export class BookIssueCreateComponent implements OnInit {
 
   goBack()
   {
-    this.router.navigate(['/book-issue'], {queryParams: {page: BookIssueService.pageNumber}});
+    this.location.back();
   }
 
   stringify(obj: Object): string {

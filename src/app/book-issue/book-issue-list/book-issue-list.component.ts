@@ -31,6 +31,7 @@ export class BookIssueListComponent implements OnInit {
   private getAllBookIssues(page: number): void {
     this.bookIssueService.getList(page).subscribe(
       data => {
+        BookIssueService.pageNumber = page;
         this.bookIssues = data;
         this.totalPages = data.totalPages ? data.totalPages : 1;
         this.pageNumber = data.pageable.pageNumber;

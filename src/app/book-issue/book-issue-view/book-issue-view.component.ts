@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BookIssue } from 'src/app/model/models';
@@ -15,7 +16,8 @@ export class BookIssueViewComponent implements OnInit {
   constructor(
     private bookIssueService: BookIssueService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private location: Location
   ) { 
     this.bookIssue = BookIssueService.selectedBookIssue;
   } 
@@ -36,7 +38,7 @@ export class BookIssueViewComponent implements OnInit {
 
   goBack()
   {
-    this.router.navigate(['/book-issue'], {queryParams: {page: BookIssueService.pageNumber}});
+    this.location.back();
   }
 
 }
